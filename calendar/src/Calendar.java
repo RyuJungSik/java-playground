@@ -1,20 +1,30 @@
 import java.util.Scanner;
 
 public class Calendar {
-    private static final int[] MAX_DAYS={31,28,31,30,31,30,31,31,30,31,30,12};
+    private static final int[] MAX_DAYS={31,28,31,30,31,30,31,31,30,31,30,31};
 
     public boolean isLeapYear(int year){
         if(year%4==0 && (year%100!=0 && year % 400==0)) return true;
         else return false;
     }
-    public int whatDayStart(String day){
-        if(day.equals("SU"))return 0;
-        else if(day.equals("MO")) return 1;
-        else if(day.equals("TU")) return 2;
-        else if(day.equals("WE")) return 3;
-        else if(day.equals("TH")) return 4;
-        else if(day.equals("FR")) return 5;
-        else return 6;
+    public int whatDayStart(int year, int month){
+//        if(day.equals("SU"))return 0;
+//        else if(day.equals("MO")) return 1;
+//        else if(day.equals("TU")) return 2;
+//        else if(day.equals("WE")) return 3;
+//        else if(day.equals("TH")) return 4;
+//        else if(day.equals("FR")) return 5;
+//        else return 6;
+        int allDays=(year-1)*365;
+        allDays+=((year-1)/4)-((year-1)/100)+((year-1)/400);
+        for(int i=0;i<month-1;i++){
+            allDays+=MAX_DAYS[i];
+        }
+
+        allDays+=1;
+        System.out.println("allday"+allDays);
+        return allDays%7;
+
     }
 
     public int getMaxDaysOfMonth(int year, int month){
@@ -36,12 +46,12 @@ public class Calendar {
         System.out.println("22 23 24 25 26 27 28");
     }
 
-    public void printRealClender(int year, int month, String startDay){
+    public void printRealClender(int year, int month){
         int nowMaxDays=getMaxDaysOfMonth(year,month);
-        int startDayNumber=whatDayStart(startDay);
-        System.out.printf("<<<<<%3d %3d>>>>>\n",year, month);
-        System.out.println("일 월 화 수 목 금 토");
-        System.out.println("--------------------");
+        int startDayNumber=whatDayStart(year,month);
+        System.out.printf("<<<<<%3d년 %3d월>>>>>\n",year, month);
+        System.out.println(" SU MO TU WE TH FR SA");
+        System.out.println("-----------------------");
         for(int j=0;j<startDayNumber;j++){
             System.out.printf("   ");
         }
