@@ -34,7 +34,7 @@ public class Calendar {
         //요구 사항 3
         System.out.println("달을 입력하세요.");
         int month=scanner.nextInt();
-        System.out.printf("%d월은 %d일까지 있습니다.", month, cal.getMaxDaysOfMonth(month));
+        System.out.printf("%d월은 %d일까지 있습니다.\n", month, cal.getMaxDaysOfMonth(month));
 
         //요구 사항 4
         System.out.println("반복횟수를 입력하세요.");
@@ -42,7 +42,18 @@ public class Calendar {
         for(int i=0;i<count;i++){
             System.out.println("달을 입력하세요.");
             month=scanner.nextInt();
-            System.out.printf("%d월은 %d일까지 있습니다.", month, cal.getMaxDaysOfMonth(month));
+            System.out.printf("%d월은 %d일까지 있습니다.\n", month, cal.getMaxDaysOfMonth(month));
+        }
+
+        //요구 사항 5
+        while(true){
+            System.out.println("달을 입력하세요.");
+            month=scanner.nextInt();
+            if(month==-1){
+                System.out.println("Have a nice day!");
+                break;
+            }
+            System.out.printf("%d월은 %d일까지 있습니다.\n", month, cal.getMaxDaysOfMonth(month));
         }
     }
 }
