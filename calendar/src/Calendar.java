@@ -20,11 +20,8 @@ public class Calendar {
         for(int i=0;i<month-1;i++){
             allDays+=MAX_DAYS[i];
         }
-
         allDays+=1;
-        System.out.println("allday"+allDays);
         return allDays%7;
-
     }
 
     public int getMaxDaysOfMonth(int year, int month){
@@ -34,7 +31,6 @@ public class Calendar {
         }else{
             return MAX_DAYS[month-1];
         }
-
     }
 
     public void printSampleClender(){
